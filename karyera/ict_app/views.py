@@ -205,7 +205,7 @@ def category(request,name):
 
 
     
-
+@login_required
 def voting(request,id):
     ranking=Blog.objects.filter(id=id,approved_blog=True).first().rank
     ranking+=int(request.POST.get("voting"))
@@ -213,9 +213,19 @@ def voting(request,id):
     return redirect("/blogs/"+str(id))
     
 
-
+@login_required
 def course_voting(request,id):
     ranking=Course.objects.filter(id=id).first().rank
     ranking+=int(request.POST.get("voting"))
     Course.objects.filter(id=id).update(rank=ranking)
     return redirect("/courses/"+str(id))
+
+
+@login_required
+def user_prfile(request,id):
+    user=User.objects.filter(id=id).first()
+    if user==request.user:
+        blog=Blog.objects.filter(author=request.user,approved_blog=True).order_by("-created_date")
+        return render(request,"user_profile.html",{'blogs':blog})
+    else:
+        return user_prfile(request,request.user.id)

@@ -81,6 +81,8 @@ TEMPLATES = [
 
 
 # Email settings
+# my_project/settings.py
+
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = "smtp.gmail.com"

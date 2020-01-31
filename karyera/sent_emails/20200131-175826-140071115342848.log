@@ -1,0 +1,25 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Subject: Password reset on localhost:8000
+From: webmaster@localhost
+To: elvin.ceferov.bmu@gmail.com
+Date: Fri, 31 Jan 2020 17:58:26 -0000
+Message-ID: <158049350644.8232.15725354891697654333@Acer>
+
+
+You're receiving this email because you requested a password reset for your user account at localhost:8000.
+
+Please go to the following page and choose a new password:
+
+http://localhost:8000/reset/Mw/5dl-1ac7c3797e9391d49e9d/
+
+Your username, in case you've forgotten: elvin.ceferov.bmu@gmail.com
+
+Thanks for using our site!
+
+The localhost:8000 team
+
+
+
+-------------------------------------------------------------------------------

@@ -1,9 +1,7 @@
 {% extends "base.html" %}
 {% load thumbnail %}
 {% load static %}
-{% load socialaccount %}
-{% providers_media_js %}
-{% load crispy_forms_tags %}
+
 {% block links %}
 <link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap-4.1.2/bootstrap.min.css' %}">
 <link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
@@ -14,13 +12,7 @@
 
 
 {% block content %}
-<div class="super_container">
 	
-	<!-- Header -->
-
-
-	<!-- Home -->
-
 	<div class="home">
 		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/footer.jpg' %}" data-speed="0.8"></div>
 		<div class="home_content_container">
@@ -28,7 +20,7 @@
 				<div class="row">
 					<div class="col">
 						<div class="home_content">
-							<div class="home_title">Login</div>
+							<div class="home_title">Career</div>
 						</div>
 					</div>
 				</div>
@@ -47,36 +39,69 @@
 					<div class="col">
 						<div class="section_title_container d-flex flex-row align-items-start justify-content-start">
 							<div>
-								<div class="section_title">Login    |</div>
-								<div class="section_subtitle">All users here</div>
+								<div class="section_title">Profile</div>
+							</div>
+							<div class="section_bar"></div>
+						</div>
+					</div>
+				</div>
+			
+				<div class="row">
+				
+					<div class="col-3 mx-auto">
+
+						<img style='border-radius: 50%;' class='mt-4' src="https://igift.am/project/img/noavatar-male.png" alt="">
+						<h2 class='mt-2 mb-2'>{{request.user.email}}</h2>
+					
+					</div>
+					</div>
+
+				<div class="row mt-3">
+					<div class="col ">
+						<div class="section_title_container d-flex flex-row align-items-start justify-content-start">
+							<div>
+								<div class=" section_title">Your blogs</div>
 							</div>
 							<div class="section_bar"></div>
 						</div>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col">
-                <br>
-								<div class="row">
-                    <div class="col-6 mx-auto">
-                        <form class="site-form"action="" method="post">
-                        {% csrf_token %}
-                        {{form|crispy}}
-                        <div>	 <a href="/signup">No account yet ?</a></div>
-                        <div>	 <a href="/password_reset/">Forgot password ?</a></div>
+				
+					<div class="col-3 mx-auto">
+						<div class="posts">
+			
+					
+							<!-- Post -->
+							{% for blg in blogs  %}
+							<div class="post_item post_h_large">
+										<div class="post_image">
+											{% if blg.image %}
+													<a href="/blogs/{{blg.id}}"><img  src="{{blg.image.url}}" width="{{im.width}}" height="{{im.height}}"></a>
+											{% else %}
+													<a href="/blogs/{{blg.id}}"><img  src= "https://www.directivecommunication.net/wp-content/uploads/2014/03/no-image-found.jpg" width="{{im.width}}" height="{{im.height}}"></a>
+											{% endif %}
+										</div>
+										<div class="post_content">
+											<div class="post_title"><a href="/blogs/{{blg.id}}">{{blg.title}}</a></div>
+										</div>
+							</div>
+					
+					{% empty %}
+					<p>No Shared</p>
+					{% endfor %}
+						</div>
 
 						
-                        <input type="submit" class='btn btn-success'>
-                        </form>
-                    </div>
-								</div>
 					</div>
+
+					<!-- Sidebar -->
+
+				
 				</div>
 			</div>
 		</div>
 	</div>
-
-	<!-- Footer -->
 
 </div>
 {% endblock content %}
@@ -96,9 +121,7 @@
 {% endblock scripts %}
 
 
-
-
-
-
-
-
+<div class="contact_title">{{request.user.email}}</div>
+						<div class="contact_text">
+							<p> </p>
+						</div>
