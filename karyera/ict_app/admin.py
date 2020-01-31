@@ -4,8 +4,7 @@ from django.contrib import admin
 from .models import *
 
 admin.site.register([Blog,Category,
-				Documents,
-				Carousel,Comment,
-				Most_popular_books,ContactPart,About_part])
+				Carousel,Course,Comment,
+				Most_popular_books,Book,ContactPart,About_part])
 
 admin.site.register(User, UserAdmin)

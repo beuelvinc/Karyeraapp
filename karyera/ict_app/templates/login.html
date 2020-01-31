@@ -62,9 +62,9 @@
                         <form class="site-form"action="" method="post">
                         {% csrf_token %}
                         {{form|crispy}}
+                        <div>	 <a href="/signup">No account yet ?</a></div>
                         <input type="submit" class='btn btn-success'>
                         </form>
-                        <a href="{% provider_login_url 'facebook' method='oauth2' %}">Facebook Connect</a>
                     </div>
 								</div>
 					</div>

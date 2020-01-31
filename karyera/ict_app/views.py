@@ -14,11 +14,12 @@ from django.contrib.auth.decorators import login_required
 
 def home(request):
     carousel=Carousel.objects.all()
-    blogs=Blog.objects.order_by('-created_date')[:4]
+    blogs=Blog.objects.filter(approved_blog=True).order_by('-rank')[:4]
+    books=Book.objects.all().order_by('-shared_date')[:4]
     mpbs=Most_popular_books.objects.all()
     ctgry=Category.objects.all()
-    pop_blogs=Blog.objects.annotate(number_of_comments=Count('comments')).order_by('-number_of_comments')[:3]
-    return render(request,"home.html",{"blogs":blogs,"carousel":carousel,"mpbs":mpbs,"ctgries":ctgry,"pop_blogs":pop_blogs})
+    pop_blogs=Course.objects.all().order_by('-rank')[:3]
+    return render(request,"home.html",{"books":books,"blogs":blogs,"carousel":carousel,"mpbs":mpbs,"ctgries":ctgry,"courses":pop_blogs})
     
 
 def about(request):
@@ -42,28 +43,43 @@ def teachers(request):
     return HttpResponse('<h1> Teachers Page </h1>')
 
 def courses(request):
-    return HttpResponse('<h1> Courses Page </h1>')
+    book_all=Course.objects.all().order_by('-created_date')
+    blogs=Course.objects.all().order_by('created_date')[:4]
+    return render(request,"courses.html",{"blogs":blogs,"posts":book_all})
+
+@login_required
+def courses_detail(request,id):
+    data=Course.objects.filter(id=id).first()
+    if data:
+        return render(request,'courses_detail.html',{"blg":data})
+    else :
+        raise  Http404("<h1>Page not found</h1>")
 
 
-
-def ebooks(request):
-    return HttpResponse('<h1> Ebooks Page </h1>')
 
 def search(request):
     query = request.GET.get('q')
     if query:
-        data=Blog.objects.filter(title__icontains=query)
+        data=Blog.objects.filter(title__icontains=query,approved_blog=True).order_by('-created_date')
     else:
         data=[]
-    posts_all=Blog.objects.all()[:4]
+    posts_all=Blog.objects.filter(approved_blog=True).order_by('-created_date')[:4]
     return render(request,"blogs.html",{"data":data,"blogs":posts_all,"posts":data})
  
 
 
 def blogs(request):
-    posts_all=Blog.objects.all()
-    blogs=Blog.objects.all()[:4]
+    posts_all=Blog.objects.filter(approved_blog=True).order_by('-created_date')
+    blogs=Blog.objects.filter(approved_blog=True).order_by('-created_date')[:4]
     return render(request,"blogs.html",{"blogs":blogs,"posts":posts_all})
+
+
+
+def books_list(request):
+    book_all=Book.objects.all().order_by('-shared_date')
+    blogs=Blog.objects.filter(approved_blog=True).order_by('-created_date')[:4]
+    return render(request,"books.html",{"blogs":blogs,"posts":book_all})
+
 
 
 @login_required
@@ -71,13 +87,13 @@ def create(request):
     form=BLogForm()
     if request.method=='POST':
         data=request.POST
-        uploaded_file=request.FILES['file']
-        fs=FileSystemStorage()
-        fs.save(uploaded_file.name,uploaded_file)
         if data:
             form=BLogForm(request.POST, request.FILES)
             if form.is_valid():
-                form.save()
+
+                data=form.save(commit=False)
+                data.author=request.user
+                data.save()
                 return redirect("/")
     return render(request,"create.html",{"form":form})
 
@@ -145,7 +161,7 @@ def Logout(request):
 
 
 def Detailview(request,id):
-    data=Blog.objects.filter(id=id).first()
+    data=Blog.objects.filter(id=id,approved_blog=True).first()
     comments = Comment.objects.filter(post=id)
     form=CommentForm()
     if request.method == "POST":
@@ -169,11 +185,19 @@ def Detailview(request,id):
         raise  Http404("<h1>Page not found</h1>")
 
 
+def BookDetail(request,id):
+    data=Book.objects.filter(id=id).first()
+
+    if data:
+        return render(request,'book_detail.html',{"blg":data})
+    else :
+        raise  Http404("<h1>Page not found</h1>")
+
 
 def category(request,name):
-    blogs=Blog.objects.all()[:4]
+    blogs=Blog.objects.filter(approved_blog=True).order_by('-created_date')[:4]
 
-    posts=Blog.objects.filter(tag__name=name)
+    posts=Blog.objects.filter(tag__name=name,approved_blog=True).order_by('-created_date')
     print(posts)
     return render(request,'category.html',{"blogs":blogs,"posts":posts,"tag":name})
 
@@ -181,3 +205,17 @@ def category(request,name):
 
 
     
+
+def voting(request,id):
+    ranking=Blog.objects.filter(id=id,approved_blog=True).first().rank
+    ranking+=int(request.POST.get("voting"))
+    Blog.objects.filter(id=id,approved_blog=True).update(rank=ranking)
+    return redirect("/blogs/"+str(id))
+    
+
+
+def course_voting(request,id):
+    ranking=Course.objects.filter(id=id).first().rank
+    ranking+=int(request.POST.get("voting"))
+    Course.objects.filter(id=id).update(rank=ranking)
+    return redirect("/courses/"+str(id))

@@ -11,13 +11,6 @@ class Category(models.Model):
         return self.name
 
 
-class Documents(models.Model):
-    title = models.CharField(max_length=120)
-    file = models.FileField(upload_to="documents", max_length=100)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    
-    def __str__(self):
-        return self.title
 
 class Carousel(models.Model):
     description=models.CharField(max_length=200, blank=True, null=True)
@@ -29,30 +22,48 @@ class Blog(models.Model):
     author=models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=120)
     tag = models.ForeignKey(Category, on_delete=models.CASCADE)
-    file =models.FileField(upload_to='blog_files',blank=True, null=True)
     content = RichTextField(config_name='awesome_ckeditor')
     created_date = models.DateTimeField(auto_now_add=True,blank=True, null=True)
+    approved_blog = models.BooleanField(default=False)
+    rank=models.IntegerField(default=0)
+    def approve(self):
+        self.approved_blog = False
+        self.save()
     def __str__(self):
         return self.title
  
+
+class Book(models.Model):
+    title = models.CharField(max_length=210)
+    image=models.ImageField(upload_to="book_pics",blank=True, null=True)
+    shared_date = models.DateTimeField(auto_now_add=True,blank=True, null=True)
+    content=models.TextField(blank=True, null=True)
+    file=models.FileField(upload_to="books_file")
+    def __str__(self):
+        return self.title
+ 
+
 class Comment(models.Model):
     author=models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,default="")
     post = models.ForeignKey(
         'Blog', on_delete=models.CASCADE, related_name='comments')
     comment = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True)
-    approved_comment = models.BooleanField(default=False)
-    
-    def approve(self):
-        self.approved_comment = True
-        self.save()
+ 
 
     def __str__(self):
         return self.author.email
 
 
-    
-# users/models.py
+class Course(models.Model):
+    title=models.CharField(max_length=50,default='add')
+    content=models.TextField(default='Nothing')
+    course_link=models.TextField(default='Nothing')
+    image=models.ImageField( upload_to="course_images",blank=True, null=True)
+    rank=models.IntegerField(default=0)
+    created_date = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return self.title
 
 
 class Most_popular_books(models.Model):
@@ -147,8 +158,6 @@ class UserManager(BaseUserManager):
 
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 from django.db import models
-from django.utils import timezone
-
 
 class UserManager(BaseUserManager):
 

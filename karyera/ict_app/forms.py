@@ -6,7 +6,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 class BLogForm(forms.ModelForm):
     class Meta:
-        fields = "__all__"
+        exclude=("approved_blog","author","rank")
         model = Blog
 
 

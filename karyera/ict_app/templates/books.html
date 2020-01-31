@@ -39,7 +39,7 @@
 					<div class="col">
 						<div class="section_title_container d-flex flex-row align-items-start justify-content-start">
 							<div>
-								<div class="section_title">Blogs</div>
+								<div class="section_title">Books</div>
 							</div>
 							<div class="section_bar"></div>
 						</div>
@@ -59,31 +59,19 @@
 									<div class="col-lg-5">
 										<div class="post_image">
 											{% if blg.image %}
-													<a href="/blogs/{{blg.id}}"><img  src="{{blg.image.url}}" width="{{im.width}}" height="{{im.height}}"></a>
+													<a href="/books/{{blg.id}}"><img  src="{{blg.image.url}}" width="{{im.width}}" height="{{im.height}}"></a>
 											{% else %}
-													<a href="/blogs/{{blg.id}}"><img  src= "https://www.directivecommunication.net/wp-content/uploads/2014/03/no-image-found.jpg" width="{{im.width}}" height="{{im.height}}"></a>
+													<a href="/books/{{blg.id}}"><img  src= "https://www.directivecommunication.net/wp-content/uploads/2014/03/no-image-found.jpg" width="{{im.width}}" height="{{im.height}}"></a>
 											{% endif %}
 										</div>
 									</div>
 									<div class="col-lg-7">
 										<div class="post_content">
-											<div class="post_category cat_world"><a href='/category/{{blg.tag.name}}'>{{blg.tag.name}}</a></div>
-											<div class="post_title"><a href="/blogs/{{blg.id}}">{{blg.title}}</a></div>
-											<div class="post_info d-flex flex-row align-items-center justify-content-start">
-												<div class="post_author d-flex flex-row align-items-center justify-content-start">
-													<div><div class="post_author_image"><img src="images/author_1.jpg" alt=""></div></div>
-													<div class="post_author_name"><a >{{blg.author.email}}</a></div>
-												</div>
-												<div class="post_date"><a >{{blg.created_date}}</a></div>
-
-											</div>
-											<div class="post_info ">Reytinq  : {{blg.rank}}</div>
+											<div class="post_title"><a href="/books/{{blg.id}}">{{blg.title}}</a></div>
 
 											<div class="post_text">
 												<p>
-												{% with description=blg.content|safe %}
-												{{description|truncatechars_html:"20"}}
-												{% endwith %}
+												{{blg.content|truncatechars:20}}
 												</p>
 											</div>
 										</div>
@@ -92,11 +80,7 @@
 							</div>
 					
 					{% empty %}
-					{% if data %}
-					{% else %}
-					<p>Axtarışa uyğun heçnə tapılmadı</p>
-					{% endif %}
-					<p>No posts</p>
+					<p>No Books</p>
 					{% endfor %}
 						</div>
 
@@ -135,7 +119,6 @@
 										</div>
 										<div class="col-lg-7">
 											<div class="post_content">
-												<div class="post_category cat_technology"> <a href="/category/{{blg.tag}}">{{blg.tag}}</a></div>
 												<div class="post_title"><a href="/blogs/{{blg.id}}">{{blg.title}}</a></div>
 												<div class="post_info d-flex flex-row align-items-center justify-content-start">
 													<div class="post_author d-flex flex-row align-items-center justify-content-start">

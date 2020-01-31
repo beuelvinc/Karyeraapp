@@ -33,8 +33,12 @@
 						</div>
 
 						<div class="post_content">
+						<p>Document</p>
 						{% if blg.file %}
-						<div><a href="/media/{{blg.file}}">PDF for this</a></div> 
+						<div><a href="/media/{{blg.file}}">PDF for this</a></div>
+						{% else %}
+						<div>No document shared</a></div>
+						 
 						{% endif %}
 
 							<div class="post_category cat_technology" style='color:white'><a href='/category/{{blg.tag}}'>{{blg.tag}}</a></div>
@@ -44,7 +48,20 @@
 									<div class="post_author_name">{{blg.author.email}}</div>
 								</div>
 								<div class="post_date">{{blg.created_date}}</div>
+								<br>
+								
+
 							</div>
+								<div class="post_info ">Ümumi səs  : {{blg.rank}}
+								
+								<form action="/voting/{{blg.id}}" method='POST'>
+								{% csrf_token %}
+									<input type="number" name='voting' value=0 max=10 min=-10>
+									<input type="submit" value='Səs ver' class='btn'>
+								</form>
+								</div>
+
+
 							<div class="post_text">
 								<p>
 								{{blg.content|safe}}

@@ -3,6 +3,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+
 <title>ICT karyera</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -74,12 +76,15 @@
 							<!-- Navigation -->
 							<nav class="main_nav">
 								<ul class="main_nav_list d-flex flex-row align-items-center justify-content-start">
-									<li><a href="/">home</a></li>
-									<li><a href="/about">about</a></li>
-									{% if user.is_authenticated %}
-										<li class=""><a href="/create">Post Share</a></li>
-									{% endif %}
-									<li><a href="/contact">contact</a></li>
+									<li><a href="/">Home</a></li>
+									<li><a href="/about">About</a></li>
+									<li ><a href="/blogs">Blogs</a></li>
+									<li ><a href="/books">Books</a></li>
+									<li ><a href="/courses">Courses</a></li>
+
+									<li ><a href="/create">Post Share</a></li>
+
+									<li><a href="/contact">Contact</a></li>
 								</ul>
 							</nav>
 							
@@ -132,10 +137,11 @@
 		<nav class="menu_nav">
 			<ul class="menu_mm">
 				<li class="menu_mm"><a href="/">Home</a></li>
-				<li class="menu_mm"><a href="/about">about</a></li>
-				{% if user.is_authenticated %}
-						<li class="menu_mm"><a href="/create">Post Share</a></li>
-				{% endif %}
+				<li class="menu_mm"><a href="/about">About</a></li>
+				<li class="menu_mm"><a href="/blogs">Blogs</a></li>
+				<li class="menu_mm"><a href="/books">Books</a></li>
+				<li class="menu_mm"><a href="/courses">Courses</a></li>
+				<li class="menu_mm"><a href="/create">Post Share</a></li>
 				<li class="menu_mm"><a href="/contact">Contact</a></li>
 						{% if user.is_authenticated %}
 								<li class="menu_mm"><a ></a></li>
