@@ -10,7 +10,7 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('', views.home, name='ict-home'),
     path('about/', views.about, name='ict-about'),
-    path('contact/', views.contact, name='ict-contact'),
+    # path('contact/', views.contact, name='ict-contact'),
     path('blogs/', views.blogs, name='ict-blogs'),
     path('create/', views.create, name='ict-create'),
     path('login/', views.Login, name='login'),
@@ -30,7 +30,12 @@ urlpatterns = [
     re_path('reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
         auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     path('reset/done/', auth_views.PasswordResetCompleteView.as_view(), name='password_reset_complete'),
-    path("profile/<int:id>",views.user_prfile)
+    path("profile/<int:id>",views.user_prfile),
+
+
+    path("book/<str:category>/",views.book_category,name='book_category'),
+    path("course/<str:category>/",views.course_category,name='course_category'),
+    
 ]
 
 

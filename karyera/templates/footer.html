@@ -1,10 +1,16 @@
 	{% load static %}
-	<footer class="footer">
+	<footer class="footer" style='background-color:#2B2E38'>
 		<div class="footer_social">
 			<div class="container">
 				<div class="row">
-					<div class="col text-center">
-						<ul class="footer_social_list d-flex flex-row align-items-center justify-content-center">
+					<div class="col text-align-center">
+
+						<ul style='float:left' id='temp' class="mt-4  d-flex  align-items-center justify-content-center">
+							<li style='color:white' class='mt-4'>  IctKaryera Copyright @ 2020</li>
+						</ul>
+						<ul class="footer_social_list d-flex flex-row align-items-center justify-content-end">
+							<li> <a style='color:white' onmouseover="" href="mailto:info@ictkaryera.az"> <i>info@ictkaryera.az</i></a></li>
+							<li> <a style='color:white' onmouseover=""> <i></i></a></li>
 							<li><a href="https://www.facebook.com/groups/ictkaryera"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
 							<li><a ><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
 							<li><a ><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
@@ -13,32 +19,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="footer_content">
-			<!-- Image credit: https://unsplash.com/@badashphotos -->
-			<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="{% static 'images/footer.jpg' %}" data-speed="0.8"></div>
-			<div class="container">
-				<div class="row">
-					<div class="col text-center">
-						<div class="logo_container">
-							<a href="#">
-									<div class="logo"><span>Karyera</span></div>
-									<div class="logo_sub">Karyeranız bizim əlimizdə</div>
-							</a>
-						</div>
-						<div class="footer_nav_container text-center">
-							<nav class="footer_nav">
-								<ul class="footer_nav_list d-flex flex-md-row flex-column align-items-center justify-content-start">
-									<li><a href="/">home</a></li>
-									<li><a href="/about">about</a></li>
-									{% if user.is_authenticated %}
-									<li class=""><a href="/create">Post Share</a></li>
-									{% endif %}
-									<li><a href="/contact">contact</a></li>
-								</ul>
-							</nav>
-						</div>
-						
-				</div>
-			</div>
-		</div>
+	
 	</footer>
+
+

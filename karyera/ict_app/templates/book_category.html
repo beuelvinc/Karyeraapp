@@ -21,6 +21,13 @@
 					<div class="col">
 						<div class="home_content">
 							<div class="home_title">Career</div>
+							<div class="breadcrumbs">
+								<ul class="d-flex flex-row align-items-start justify-content-start">
+									<li><a >Tag</a></li>
+									<li>{{tag}}
+									</li>
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -39,7 +46,7 @@
 					<div class="col">
 						<div class="section_title_container d-flex flex-row align-items-start justify-content-start">
 							<div>
-								<div class="section_title">Profile</div>
+								<div class="section_title">Books by tag</div>
 							</div>
 							<div class="section_bar"></div>
 						</div>
@@ -47,48 +54,41 @@
 				</div>
 			
 				<div class="row">
-				
-					<div class="col-md-3 mx-auto">
+					<div class="col-lg-9">
 
-						<img style='border-radius: 50%;' class='mt-4' src="https://igift.am/project/img/noavatar-male.png" alt="">
-						<h2 class='mt-2 mb-2'>{{request.user.email}}</h2>
-					
-					</div>
-					</div>
-
-				<div class="row mt-3">
-					<div class="col ">
-						<div class="section_title_container d-flex flex-row align-items-start justify-content-start">
-							<div>
-								<div class=" section_title">Your blogs</div>
-							</div>
-							<div class="section_bar"></div>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-				
-					<div class="col-3 mx-auto">
 						<div class="posts">
-			
-					
+								
+						
 							<!-- Post -->
-							{% for blg in blogs  %}
+							{% for blg in posts  %}
 							<div class="post_item post_h_large">
+								<div class="row">
+									<div class="col-lg-5">
 										<div class="post_image">
 											{% if blg.image %}
-													<a href="/blogs/{{blg.id}}"><img  src="{{blg.image.url}}" width="{{im.width}}" height="{{im.height}}"></a>
+													<a href="/books/{{blg.id}}"><img  src="{{blg.image.url}}" width="{{im.width}}" height="{{im.height}}"></a>
 											{% else %}
-													<a href="/blogs/{{blg.id}}"><img  src= "https://www.directivecommunication.net/wp-content/uploads/2014/03/no-image-found.jpg" width="{{im.width}}" height="{{im.height}}"></a>
+													<a href="/books/{{blg.id}}"><img  src= "https://www.directivecommunication.net/wp-content/uploads/2014/03/no-image-found.jpg" width="{{im.width}}" height="{{im.height}}"></a>
 											{% endif %}
 										</div>
+									</div>
+									<div class="col-lg-7">
 										<div class="post_content">
-											<div class="post_title"><a href="/blogs/{{blg.id}}">{{blg.title}}</a></div>
+											<div class="post_category cat_world"><a >{{blg.tag.name}}</a></div>
+											<div class="post_title"><a href="/books/{{blg.id}}">{{blg.title}}</a></div>
+										
+											<div class="post_text">
+												<p>
+												{{blg.content|truncatechars:12}}
+												</p>
+											</div>
 										</div>
+									</div>
+								</div>	
 							</div>
 					
 					{% empty %}
-					<p>No Shared</p>
+					<p>No Books yet</p>
 					{% endfor %}
 						</div>
 
@@ -97,7 +97,57 @@
 
 					<!-- Sidebar -->
 
-				
+					<div class="col-lg-3">
+						<div class="sidebar">
+
+							<!-- Latest Posts -->
+							<div class="sidebar_latest">
+								<div class="sidebar_title">Some Books</div>
+								<div class="latest_posts">
+									
+									
+
+									<!-- Latest Post -->
+								{% for blg in blogs  %}
+                  
+								<div class="post_item post_h_large">
+									<div class="row">
+										<div class="col-lg-5">
+											<div class="post_image">
+											
+											{% if blg.image %}
+													<a href="/books/{{blg.id}}"><img  src="{{blg.image.url}}" width="{{im.width}}" height="{{im.height}}"></a>
+											{% else %}
+													<a href="/books/{{blg.id}}"><img  src= "https://www.directivecommunication.net/wp-content/uploads/2014/03/no-image-found.jpg" width="{{im.width}}" height="{{im.height}}"></a>
+											{% endif %}
+											
+
+											
+											</div>
+										</div>
+										<div class="col-lg-7">
+											<div class="post_content">
+												<div class="post_category cat_technology"> <a href="/book/{{blg.tag}}">{{blg.tag}}</a></div>
+												<div class="post_title"><a href="/books/{{blg.id}}">{{blg.title}}</a></div>
+											
+												<div class="post_text">
+												{{blg.content|truncatechars:10}}
+												</div>
+											</div>
+										</div>
+									</div>	
+								</div>
+
+								{% endfor %}		
+											
+								</div>
+							</div>
+
+
+						
+
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -120,8 +170,3 @@
 <script src="{% static 'js/category.js' %}"></script>
 {% endblock scripts %}
 
-
-<div class="contact_title">{{request.user.email}}</div>
-						<div class="contact_text">
-							<p> </p>
-						</div>

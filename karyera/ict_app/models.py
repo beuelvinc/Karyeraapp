@@ -5,11 +5,24 @@ from django.contrib.auth.models import AbstractUser
 from django.conf import settings
 
 from django.utils import timezone
+
+
 class Category(models.Model):
     name = models.CharField(max_length=120)
     def __str__(self):
         return self.name
 
+
+class Book_category(models.Model):
+    name = models.CharField(max_length=120)
+    def __str__(self):
+        return self.name
+
+
+class Course_category(models.Model):
+    name = models.CharField(max_length=120)
+    def __str__(self):
+        return self.name
 
 
 class Carousel(models.Model):
@@ -21,7 +34,7 @@ class Blog(models.Model):
     image=models.ImageField(upload_to="blog_pics",blank=True, null=True)
     author=models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=120)
-    tag = models.ForeignKey(Category, on_delete=models.CASCADE)
+    tag = models.ForeignKey(Category, on_delete=models.CASCADE,default='Design')
     content = RichTextField(config_name='awesome_ckeditor')
     created_date = models.DateTimeField(auto_now_add=True,blank=True, null=True)
     approved_blog = models.BooleanField(default=False)
@@ -39,6 +52,8 @@ class Book(models.Model):
     shared_date = models.DateTimeField(auto_now_add=True,blank=True, null=True)
     content=models.TextField(blank=True, null=True)
     file=models.FileField(upload_to="books_file")
+    tag = models.ForeignKey(Book_category, on_delete=models.CASCADE,blank=True, null=True)
+
     def __str__(self):
         return self.title
  
@@ -62,6 +77,8 @@ class Course(models.Model):
     image=models.ImageField( upload_to="course_images",blank=True, null=True)
     rank=models.IntegerField(default=0)
     created_date = models.DateTimeField(auto_now_add=True)
+    tag = models.ForeignKey(Course_category, on_delete=models.CASCADE,blank=True, null=True)
+
     def __str__(self):
         return self.title
 

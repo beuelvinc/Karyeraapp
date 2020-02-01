@@ -395,7 +395,7 @@ section {
 }
 .header_content_container {
   width: 100%;
-  padding-top: 18px;
+  padding-top: 2px;
 }
 .header_content {
 }
@@ -1490,7 +1490,7 @@ section {
 }
 .footer_social {
   width: 100%;
-  background: #191231;
+  background: #2b2e38;
 }
 .footer_social_list {
   height: 126px;
@@ -1507,7 +1507,6 @@ section {
   transition: all 200ms ease;
 }
 .footer_social_list li:hover {
-  background: rgba(255, 78, 78, 1);
 }
 .footer_social_list li:not(:last-child) {
   margin-right: 7px;

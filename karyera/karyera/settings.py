@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'p32ev$bwp^_4ox*_hc25ryu56oba#533#oat_&u0e_-jn+p5n@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -87,8 +87,8 @@ TEMPLATES = [
 EMAIL_USE_TLS = True
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
-EMAIL_HOST_USER = "elvinc402@gmail.com"
-EMAIL_HOST_PASSWORD = "aze12345"
+EMAIL_HOST_USER = "ict.karyera@gmail.com"
+EMAIL_HOST_PASSWORD = "RR123456rr"
 
 
 WSGI_APPLICATION = 'karyera.wsgi.application'
@@ -196,10 +196,8 @@ AUTH_USER_MODEL="ict_app.User"
 
 
 STATIC_URL = '/static/'
-if DEBUG:
-    STATICFILES_DIRS=[os.path.join(BASE_DIR,"static")]
-else:
-    STATIC_ROOT= os.path.join(BASE_DIR, "static_root")
+STATIC_ROOT= os.path.join(BASE_DIR, "static_root")
+STATICFILES_DIRS=[os.path.join(BASE_DIR,"static")]
 
 
 MEDIA_URL = '/media/'

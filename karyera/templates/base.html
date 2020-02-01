@@ -27,7 +27,11 @@
   .dropdown-toggle::after { 
             content: none; 
         } 
-		
+@media only screen and (max-width: 500px) {
+  #temp {
+    display: none;
+  }
+}
 		</style>
 <body>
 
@@ -44,18 +48,10 @@
 						<div class="header_content d-flex flex-row align-items-center justfy-content-start">
 							<div class="logo_container">
 								<a href="/">
-									<div class="logo"><span>Karyera</span></div>
-									<div class="logo_sub">Karyeranız bizim əlimizdə</div>
+									<div class="logo"><span class='pt-2'>ICTKARYERA</span></div>
 								</a>
 							</div>
-							<div class="header_extra ml-auto d-flex flex-row align-items-center justify-content-start">
-								<a href="#">
-									<div class="background_image" style="background-image:url({% static 'images/cool.jpg'%})"></div>
-									<div class="header_extra_content">
-										<div class="header_extra_title">ICtkaryera</div>
-									</div>
-								</a>
-							</div>
+						
 						</div>
 					</div>
 				</div>
@@ -72,8 +68,7 @@
 							<!-- Logo -->
 							<div class="logo_container">
 								<a href="/">
-									<div class="logo"><span>Karyera</span></div>
-									<div class="logo_sub">Karyeranız bizim əlimizdə</div>
+									<div class="logo"><span>ICTKARYERA</span></div>
 								</a>
 							</div>
 
@@ -82,31 +77,68 @@
 								<ul class="main_nav_list d-flex flex-row align-items-center justify-content-start">
 									<li><a href="/">Home</a></li>
 									<li><a href="/about">About</a></li>
-									<li ><a href="/blogs">Blogs</a></li>
-									<li ><a href="/books">Books</a></li>
-									<li ><a href="/courses">Courses</a></li>
-     <li>
+
+ <li class="">
 	 
 	   <div class="dropdown">
   <a class="dropdown-toggle" style='color:#4f4d4d' href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Kateqoriya
+    Blogs
   </a>
 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-    <a class="dropdown-item" href="/category/IT%20&%20Software/">	IT & Software</a>
+	<a class="dropdown-item" href="/create/">Blog share</a>
+    <a class="dropdown-item" href="/category/Technology/">Technology</a>
     <a class="dropdown-item" href="/category/Design/">Design</a>
-    <a class="dropdown-item" href="category/Development/">Development</a>
-    <a class="dropdown-item" href="/category/Office%20Productivity/">Office Productivity</a>
-    <a class="dropdown-item" href="/category/Business/">Business</a>
-    <a class="dropdown-item" href="category/Academics/">Academics</a>
-    <a class="dropdown-item" href="category/Other/">Other</a>
+    <a class="dropdown-item" href="/category/Programming/">Programming</a>
+    <a class="dropdown-item" href="/category/Data%20Science/">Data Science</a>
+    <a class="dropdown-item" href="/category/Photography/">Photography</a>
 
   </div>
-</div></li>
- 
-									<li ><a href="/create">Share</a></li>
+</div>
 
-									<li><a href="/contact">Contact</a></li>
+</li>
+
+
+ <li class="">
+	 
+	   <div class="dropdown">
+  <a class="dropdown-toggle" style='color:#4f4d4d' href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Books
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="/book/IT/">IT</a>
+    <a class="dropdown-item" href="/book/Design/">Design</a>
+    <a class="dropdown-item" href="/book/Programming/">Programming</a>
+    <a class="dropdown-item" href="/book/Other/">Other</a>
+
+  </div>
+</div>
+
+</li>
+
+ <li class="menu_mm">
+	 
+	   <div class="dropdown">
+  <a class="dropdown-toggle" style='color:#4f4d4d' href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Courses
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="/course/IT%20&%20Software/">	IT & Software</a>
+    <a class="dropdown-item" href="/course/Design/">Design</a>
+    <a class="dropdown-item" href="/course/Development/">Development</a>
+    <a class="dropdown-item" href="/course/Office%20Productivity/">Office Productivity</a>
+    <a class="dropdown-item" href="/course/Business/">Business</a>
+    <a class="dropdown-item" href="/course/Academics/">Academics</a>
+
+  </div>
+</div>
+
+</li>    
+ 
+
+
 								</ul>
 							</nav>
 							
@@ -125,7 +157,7 @@
 								<ul class="main_nav_list d-flex flex-row align-items-center justify-content-end">
 						{% if user.is_authenticated %}
 							<li class=""><a ></a></li>
-							<li><a href="profile/{{request.user.id}}">	<img style='border-radius: 50%;' width=40 class='mb-1'   src="https://igift.am/project/img/noavatar-male.png" alt=""></a> </li>
+							<li><a href="/profile/{{request.user.id}}">	<img style='border-radius: 50%;' width=40 class='mb-1'   src="https://igift.am/project/img/noavatar-male.png" alt=""></a> </li>
 							<li class=""><a href="/logout">Logout</a></li>
 						{% else %}
 							<li class=""><a ></a></li>
@@ -160,11 +192,66 @@
 			<ul class="menu_mm">
 				<li class="menu_mm"><a href="/">Home</a></li>
 				<li class="menu_mm"><a href="/about">About</a></li>
-				<li class="menu_mm"><a href="/blogs">Blogs</a></li>
-				<li class="menu_mm"><a href="/books">Books</a></li>
-				<li class="menu_mm"><a href="/courses">Courses</a></li>
-				<li class="menu_mm"><a href="/create">Post Share</a></li>
-				<li class="menu_mm"><a href="/contact">Contact</a></li>
+ <li class="menu_mm">
+	 
+	   <div class="dropdown">
+  <a class="dropdown-toggle" style='color:#4f4d4d' href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Blogs
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+	<a class="dropdown-item" href="/create/">Blog share</a>
+    <a class="dropdown-item" href="/category/Technology/">Technology</a>
+    <a class="dropdown-item" href="/category/Design/">Design</a>
+    <a class="dropdown-item" href="category/Development/">Programming</a>
+    <a class="dropdown-item" href="/category/Data%20Science/">Data Science</a>
+    <a class="dropdown-item" href="category/Photography/">Photography</a>
+
+  </div>
+</div>
+
+</li>
+
+ <li class="menu_mm">
+	 
+	   <div class="dropdown">
+  <a class="dropdown-toggle" style='color:#4f4d4d' href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Books
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="/book/IT/">IT</a>
+    <a class="dropdown-item" href="/book/Design/">Design</a>
+    <a class="dropdown-item" href="/book/Programming/">Programming</a>
+    <a class="dropdown-item" href="/category/Other/">Other</a>
+
+  </div>
+</div>
+
+</li>
+
+
+ <li class="menu_mm">
+	 
+	   <div class="dropdown">
+  <a class="dropdown-toggle" style='color:#4f4d4d' href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Courses
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="/course/IT%20&%20Software/">	IT & Software</a>
+    <a class="dropdown-item" href="/course/Design/">Design</a>
+    <a class="dropdown-item" href="/course/Development/">Development</a>
+    <a class="dropdown-item" href="/course/Office%20Productivity/">Office Productivity</a>
+    <a class="dropdown-item" href="/course/Business/">Business</a>
+    <a class="dropdown-item" href="/course/Academics/">Academics</a>
+
+  </div>
+</div>
+
+</li>
+
+
 						{% if user.is_authenticated %}
 							<li class="menu_mm"><a ></a></li>
 							<li class='menu_mm'><a href="profile/{{request.user.id}}">Profile</a></li>

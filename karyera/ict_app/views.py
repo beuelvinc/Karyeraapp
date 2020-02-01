@@ -26,18 +26,18 @@ def about(request):
     data=About_part.objects.first()
     return render(request, 'about.html',{"data":data})
 
-def contact(request):
-    if request.method=="POST":
-        send_mail(
-            request.POST.get("firstname"),
-            request.POST.get("subject"),
-            request.POST.get("e-mail"),
-            ['elvinc402@gmail.com'],
-            fail_silently=False,
-        )
-        return redirect("/")
-    contact=ContactPart.objects.first()
-    return render(request, 'contact.html',{"contact":contact})
+# def contact(request):
+#     if request.method=="POST":
+#         send_mail(
+#             request.POST.get("firstname"),
+#             request.POST.get("subject"),
+#             request.POST.get("e-mail"),
+#             ['elvinc402@gmail.com'],
+#             fail_silently=False,
+#         )
+#         return redirect("/")
+#     contact=ContactPart.objects.first()
+#     return render(request, 'contact.html',{"contact":contact})
 
 def teachers(request):
     return HttpResponse('<h1> Teachers Page </h1>')
@@ -229,3 +229,24 @@ def user_prfile(request,id):
         return render(request,"user_profile.html",{'blogs':blog})
     else:
         return user_prfile(request,request.user.id)
+
+
+
+
+
+def book_category(request,category):
+    name=category
+    blogs=Book.objects.all().order_by('shared_date')[:4]
+
+    posts=Book.objects.filter(tag__name=name).order_by('-shared_date')
+    return render(request,'book_category.html',{"blogs":blogs,"posts":posts,"tag":name})
+
+
+
+def course_category(request,category):
+    name=category
+    blogs=Course.objects.all().order_by('created_date')[:4]
+
+    posts=Course.objects.filter(tag__name=name).order_by('-created_date')
+    return render(request,'course_category.html',{"blogs":blogs,"posts":posts,"tag":name})
+
