@@ -62,10 +62,8 @@
                         <form class="site-form"action="" method="post">
                         {% csrf_token %}
                         {{form|crispy}}
-                        <div>	 <a href="/signup">No account yet ?</a></div>
+<div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-auto-logout-link="false" data-use-continue-as="false"></div>                        <div>	 <a href="/signup">No account yet ?</a></div>
                         <div>	 <a href="/password_reset/">Forgot password ?</a></div>
-
-						
                         <input type="submit" class='btn btn-success'>
                         </form>
                     </div>

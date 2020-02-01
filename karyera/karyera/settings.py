@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'p32ev$bwp^_4ox*_hc25ryu56oba#533#oat_&u0e_-jn+p5n@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.facebook',
     'sorl.thumbnail',
         'crispy_forms',
+    'social_django',  # <--
 
     
 ]
@@ -59,6 +60,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+        'social_django.middleware.SocialAuthExceptionMiddleware',  # <--
+
 ]
 
 ROOT_URLCONF = 'karyera.urls'
@@ -74,6 +78,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'social_django.context_processors.backends',  # <--
+                'social_django.context_processors.login_redirect', # <--
             ],
         },
     },
@@ -157,6 +164,8 @@ SITE_ID = 1
 AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
     'django.contrib.auth.backends.ModelBackend',
+    'social_core.backends.facebook.FacebookOAuth2',
+
 )
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
@@ -185,10 +194,10 @@ SOCIALACCOUNT_PROVIDERS = \
         'VERSION': 'v2.4'}}
 
      #facebook
-SOCIAL_AUTH_FACEBOOK_KEY = 'secret!'  # App ID
-SOCIAL_AUTH_FACEBOOK_SECRET ='secret!' #app key
+SOCIAL_AUTH_FACEBOOK_KEY = '184425506114338'  # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET ='7443b1645265932e73594eab3349f4ae' #app key
 
-
+LOGOUT_URL = '/logout'
 LOGIN_URL = '/login'
 LOGIN_REDIRECT_URL = '/'
 AUTH_USER_MODEL="ict_app.User"
@@ -196,10 +205,8 @@ AUTH_USER_MODEL="ict_app.User"
 
 
 STATIC_URL = '/static/'
-if not DEBUG:
-    STATIC_ROOT= os.path.join(BASE_DIR, "static_root")
-else:
-    STATICFILES_DIRS=[os.path.join(BASE_DIR,"static")]
+STATIC_ROOT= os.path.join(BASE_DIR, "static_root")
+STATICFILES_DIRS=[os.path.join(BASE_DIR,"static")]
 
 
 MEDIA_URL = '/media/'

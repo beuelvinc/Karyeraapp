@@ -52,7 +52,7 @@
 								
 
 							</div>
-								<div class="post_info ">Ümumi səs  : {{blg.rank}}
+								<div class="post_info ">Total votes  : {{blg.rank}}
 								
 								<form action="/voting/{{blg.id}}" method='POST'>
 								{% csrf_token %}
@@ -105,7 +105,7 @@
 
 						<!-- Reply  -->
 						<div class="reply_form_container">
-							<div class="reply_form_title">Rəy bildir</div>
+							<div class="reply_form_title">Leave a comment</div>
 							{% if request.user.is_authenticated %}
 							
 							<form action="#" id="reply_form" method='POST' class="reply_form">
@@ -115,7 +115,7 @@
 									<button class="reply_button trans_200">submit</button>
 							</form>
 							{% else %}
-							<p>Rəy yazmaq üçün sayta daxil olmalısınız</p>
+							<p>You need to register for writing comment</p>
 							{% endif %}
 
 						</div>
