@@ -40,33 +40,39 @@
 
 	<div class="intro">
 		<div class="container">
-			<div class="row">
-
-				<!-- Intro Item -->
-				<div class="col-4 intro_col">
+			<div class="flex-row">
+		     <div class="intro-item intro-item1">
+				<span>Trending Courses</span>
+			 </div>
+			 <div class=" intro-item intro-item2">
+				<span>Books & Library</span>
+			 </div>
+			 <div class="intro-item intro-item3">
+				<span>Certification</span>
+			</div>
+			
+<!-- 
+				<div class="intro_col">
 					<div class="intro_item">
 						<div class="intro_content trans_200"><a style='color:white'>Trending Courses</a></div>
 					</div>
 				</div>
-
-				<!-- Intro Item -->
-				<div class="col-4 intro_col">
+				<div class="intro_col">
 					<div class="intro_item">
 						<div class="intro_content trans_200"><a style='color:white'>Books & Library</a></div>
 					</div>
 				</div>
 
 			
-				<div class="col-4 intro_col">
+				<div class="intro_col">
 					<div class="intro_item">
 						<div class="intro_content trans_200"><a style='color:white' >Certification</a></div>
 					</div>
-				</div>
+				</div> -->
 
 				</div>
 			</div>
 		</div>
-
 	<!-- Content Container -->
 
 	<div class="content_container">
@@ -236,7 +242,7 @@
 					
 						<!-- Latest Posts -->
 						<div class="sidebar_latest">
-							<div class="sidebar_title">Most popular books</div>
+							<div class="sidebar_title " id='mpc'>Most popular books</div>
 							<div class="latest_posts">
 								{% comment %} most popular courses {% endcomment %}
 							{% for mpb in mpbs %}
