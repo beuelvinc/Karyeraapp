@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'p32ev$bwp^_4ox*_hc25ryu56oba#533#oat_&u0e_-jn+p5n@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -196,8 +196,10 @@ AUTH_USER_MODEL="ict_app.User"
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT= os.path.join(BASE_DIR, "static_root")
-STATICFILES_DIRS=[os.path.join(BASE_DIR,"static")]
+if not DEBUG:
+    STATIC_ROOT= os.path.join(BASE_DIR, "static_root")
+else:
+    STATICFILES_DIRS=[os.path.join(BASE_DIR,"static")]
 
 
 MEDIA_URL = '/media/'
