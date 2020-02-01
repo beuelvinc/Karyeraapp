@@ -1,0 +1,22 @@
+.footer-wrapper {
+  color: white;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 5fr 2fr;
+}
+
+@media (max-width: 400px) {
+  .footer-wrapper {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-row-gap: 0.6rem;
+  }
+}
+
+.social-media-item {
+  margin-left: 10px;
+}
+
+.fa-twitter {
+  color: blue;
+}
