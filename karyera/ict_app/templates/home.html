@@ -121,7 +121,7 @@
 										
 										</div>
 										<div class="post_content">
-											<div class="post_title"><a href="/courses/{{blg.id}}">{{blg.title}} </a> <span style='margin-left:20px'>Ranking : {{blg.rank}}</span> </div>
+											<div class="post_title"><a href="/courses/{{blg.id}}">{{blg.title|truncatewords:4}} </a> <span style='margin-left:20px'>Ranking : {{blg.rank}}</span> </div>
 											<div></div>
 										</div>
 									</div>
@@ -156,7 +156,7 @@
 										
 										</div>
 										<div class="post_content">
-											<div class="post_title"><a href="/books/{{blg.id}}">{{blg.title}} </a></div>
+											<div class="post_title"><a href="/books/{{blg.id}}">{{blg.title|truncatewords:4}} </a></div>
 											<div class="post_info d-flex flex-row align-items-center justify-content-start">
 											</div>
 										</div>
@@ -203,7 +203,7 @@
 										<div class="col-lg-7">
 											<div class="post_content">
 												<div class="post_category cat_technology"> <a href="/category/{{blg.tag}}">{{blg.tag}}</a></div>
-												<div class="post_title"><a href="/blogs/{{blg.id}}">{{blg.title}}</a></div>
+												<div class="post_title"><a href="/blogs/{{blg.id}}">{{blg.title|truncatewords:4}}</a></div>
 												<div class="post_info d-flex flex-row align-items-center justify-content-start">
 													<div class="post_author d-flex flex-row align-items-center justify-content-start">
 														<div class="post_author_name"><a>{{blg.author.email}}</a></div>

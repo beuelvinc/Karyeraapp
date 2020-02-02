@@ -48,13 +48,13 @@
 			
 				<div class="row">
 				
-					<div class="col-md-3 mx-auto">
+					<div class="col-md-4 mx-auto">
 
-						<img style='border-radius: 50%;' class='mt-4' src="https://igift.am/project/img/noavatar-male.png" alt="">
-						<h2 class='mt-2 mb-2'>{{request.user.email}}</h2>
+						<img style='border-radius: 50%;' class='mt-4 text-center' src="https://avatars1.githubusercontent.com/u/48854668?s=400&v=4" alt="">
+						<h2 class='mt-2 ml-4  mb-2'>{{request.user.email}}</h2>
 					
 					</div>
-					</div>
+				</div>
 
 				<div class="row mt-3">
 					<div class="col ">
@@ -68,7 +68,7 @@
 				</div>
 				<div class="row">
 				
-					<div class="col-3 mx-auto">
+					<div class="col-5 mx-auto">
 						<div class="posts">
 			
 					
@@ -83,7 +83,7 @@
 											{% endif %}
 										</div>
 										<div class="post_content">
-											<div class="post_title"><a href="/blogs/{{blg.id}}">{{blg.title}}</a></div>
+											<div class="post_title"><a href="/blogs/{{blg.id}}">{{blg.title|truncatewords:4}}</a></div>
 										</div>
 							</div>
 					

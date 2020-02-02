@@ -86,7 +86,7 @@ p {
   font-size: 14px;
   line-height: 2.14;
   font-weight: 400;
-  color: #878787;
+  color: black;
   -webkit-font-smoothing: antialiased;
   -webkit-text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
   text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
@@ -868,9 +868,9 @@ section {
 .home_slider_nav {
   position: absolute;
   top: 46%;
-  width: 42px;
-  height: 42px;
-  background: #624693;
+  width: 50px;
+  height: 50px;
+  background: rgba(43, 46, 56, 0.3);
   z-index: 1;
   text-align: center;
   cursor: pointer;
@@ -906,7 +906,7 @@ section {
 .home_category {
   display: inline-block;
   height: 22px;
-  background: #624693;
+  background: rgba(43, 46, 56, 0.8);
 }
 .home_category a {
   display: block;
@@ -1412,7 +1412,7 @@ section {
 .latest_post_date {
   font-family: "Open Sans", sans-serif;
   font-size: 11px;
-  color: #878787;
+  color: black;
   margin-top: 10px;
 }
 .most_viewed {
@@ -1450,7 +1450,7 @@ section {
 .most_viewed_date a {
   font-family: "Open Sans", sans-serif;
   font-size: 11px;
-  color: #878787;
+  color: black;
   -webkit-transition: all 200ms ease;
   -moz-transition: all 200ms ease;
   -ms-transition: all 200ms ease;

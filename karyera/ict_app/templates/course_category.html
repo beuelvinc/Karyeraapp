@@ -75,7 +75,7 @@
 									<div class="col-lg-7">
 										<div class="post_content">
 											<div class="post_category cat_world"><a >{{blg.tag.name}}</a></div>
-											<div class="post_title"><a href="/courses/{{blg.id}}">{{blg.title}}</a></div>
+											<div class="post_title"><a href="/courses/{{blg.id}}">{{blg.title|truncatewords:4}}</a></div>
 										
 											<div class="post_text">
 												<p>
@@ -128,7 +128,7 @@
 										<div class="col-lg-7">
 											<div class="post_content">
 												<div class="post_category cat_technology"> <a  href="/course/{{blg.tag}}">{{blg.tag.name|truncatechars:10}}</a></div>
-												<div class="post_title"><a href="/courses/{{blg.id}}">{{blg.title}}</a></div>
+												<div class="post_title"><a href="/courses/{{blg.id}}">{{blg.title|truncatewords:4}}</a></div>
 											
 												<div class="post_text">
 												{{blg.content|truncatechars:10}}

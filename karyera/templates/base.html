@@ -26,7 +26,10 @@
 
 </head>
 <style>
-
+.post_text *{
+	color:black;
+	font-size:17;
+}
   .dropdown-toggle::after { 
             content: none; 
         } 
@@ -83,7 +86,7 @@
 
  <li class="">
 	 
-	   <div class="dropdown">
+	   <div class="dropdown hover-click">
   <a class="dropdown-toggle" style='color:#4f4d4d' href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Blogs
   </a>
@@ -104,7 +107,7 @@
 
  <li class="">
 	 
-	   <div class="dropdown">
+	   <div class="dropdown hover-click">
   <a class="dropdown-toggle" style='color:#4f4d4d' href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Books
   </a>
@@ -122,7 +125,7 @@
 
  <li class="menu_mm">
 	 
-	   <div class="dropdown">
+	   <div class="dropdown hover-click">
   <a class="dropdown-toggle" style='color:#4f4d4d' href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Courses
   </a>
@@ -160,7 +163,7 @@
 								<ul class="main_nav_list d-flex flex-row align-items-center justify-content-end">
 						{% if user.is_authenticated %}
 							<li class=""><a ></a></li>
-							<li><a href="/profile/{{request.user.id}}">	<img style='border-radius: 50%;' width=40 class='mb-1'   src="https://igift.am/project/img/noavatar-male.png" alt=""></a> </li>
+							<li><a href="/profile/{{request.user.id}}">	<img style='border-radius: 50%;' width=40 class='mb-1'   src="https://avatars1.githubusercontent.com/u/48854668?s=400&v=4" alt=""></a> </li>
 							<li class=""><a href="/logout">Logout</a></li>
 						{% else %}
 							<li class=""><a ></a></li>
@@ -291,6 +294,5 @@
 <script src="{% static 'js/custom.js' %}"></script>
 {% endblock scripts %}
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v5.0&appId=184425506114338&autoLogAppEvents=1"></script>
-
 </body>
 </html>
